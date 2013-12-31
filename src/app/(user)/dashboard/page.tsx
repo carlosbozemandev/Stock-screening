@@ -1,3 +1,4 @@
+import StockScreener from "@/components/ui/stock-screener";
 import StockScreening from "@/components/ui/stock-screener";
 import TradingView from "@/components/ui/trading-view";
 import React from "react";
@@ -8,7 +9,8 @@ const Dashboard = (props: Props) => {
   return (
     <div>
       {/* <StockScreening /> */}
-      <TradingView/>
+      <TradingView />
+      {/* <StockScreener /> */}
     </div>
   );
 };

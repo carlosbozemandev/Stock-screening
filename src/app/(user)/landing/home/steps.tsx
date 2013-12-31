@@ -5,7 +5,7 @@ const PortfolioSteps = () => {
     <div className="flex flex-col items-center container mt-4 space-y-6 p-8 ">
       {/* Header */}
       <div className="text-center">
-        <h2 className="text-2xl font-semibold text-white">
+        <h2 className="text-3xl font-semibold text-white">
           Take control of your portfolio in a few simple steps
         </h2>
         <p className="text-white">
@@ -64,7 +64,7 @@ const PortfolioSteps = () => {
         </div>
 
         {/* Step 3 */}
-        <div className="bg-gradient-to-r border border-blue-500 from-black via-gray-800 to-blackp-6 shadow rounded-md text-center">
+        <div className="bg-gradient-to-r border p-6 border-blue-500 from-black via-gray-800 to-blackp-6 shadow rounded-md text-center">
           <div className="mb-4">
             <span className="bg-blue-500 text-white px-3 py-1 rounded-full">3</span>
           </div>

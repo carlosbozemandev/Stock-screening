@@ -8,10 +8,11 @@ import {
 } from "lucide-react";
 import React from "react";
 
+
 const FinancialMessage = () => {
   return (
-    <div className="p-8 rounded-lg w-fit  container justify-center text-center">
-      <h2 className="text-2xl font-bold mb-6 text-white">
+    <div className="p-8 rounded-lg w-fit mt-5  container justify-center text-center">
+      <h2 className="text-3xl font-bold mb-6 text-white">
         No more gambling with your financial future
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">

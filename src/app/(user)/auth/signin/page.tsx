@@ -78,7 +78,7 @@ const Signin = (props: Props) => {
             duration: 900,
           });
           setIsLoading(false);
-          return router.push("/dashboard");
+          return router.push("/landing/home");
         }
       } else {
         toast({

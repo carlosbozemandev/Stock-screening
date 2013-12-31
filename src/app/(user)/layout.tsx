@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/ui/footer";
 import Navbar from "@/components/ui/navbar";
 import { Toaster } from "@/components/ui/toaster";
 import { usePathname } from "next/navigation";
@@ -12,21 +13,15 @@ type Props = {
 const Layout = ({ children }: Props) => {
   const pathname = usePathname();
 
-  // Conditional checks for paths
+  // Conditional checks for specific paths
   const isAuthPage = pathname === "/auth/signin" || pathname === "/auth/signup";
   const isLandingPage = pathname === "/landing/home";
-  const isDahsboardPage = pathname === "/dashboard";
+  const isDashboardPage = pathname === "/dashboard";
 
+  // Render based on pathname
   return (
     <>
       {isAuthPage && (
-        <>
-          {children}
-          <Toaster />
-        </>
-      )}
-  
-      {isDahsboardPage && (
         <>
           {children}
           <Toaster />
@@ -38,6 +33,23 @@ const Layout = ({ children }: Props) => {
           <Navbar />
           {children}
           <Toaster />
+          <Footer />
+        </>
+      )}
+
+      {isDashboardPage && (
+        <>
+          {children}
+          <Toaster />
+        </>
+      )}
+
+      {!isAuthPage && !isLandingPage && !isDashboardPage && (
+        <>
+          <Navbar />
+          {children}
+          <Toaster />
+          <Footer />
         </>
       )}
     </>

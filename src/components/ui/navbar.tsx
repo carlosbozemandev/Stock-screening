@@ -13,22 +13,25 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <ul className="hidden md:flex space-x-3 justify-center items-center">
-        <li className="hover:bg-blue-100 cursor-pointer px-3 py-1 rounded-md">
+        <Link
+          href={"/landing/home"}
+          className="hover:bg-blue-500 cursor-pointer px-3 py-1 rounded-md"
+        >
           Home
-        </li>
-        <li className="hover:bg-blue-100 cursor-pointer px-3 py-1 rounded-md">
+        </Link>
+        <li className="hover:bg-blue-500 cursor-pointer px-3 py-1 rounded-md">
           About
         </li>
-        <li className="hover:bg-blue-100 cursor-pointer px-3 py-1 rounded-md">
+        <li className="hover:bg-blue-500 cursor-pointer px-3 py-1 rounded-md">
           Services
         </li>
-        <li className="hover:bg-blue-100 cursor-pointer px-3 py-1 rounded-md">
+        <li className="hover:bg-blue-500 cursor-pointer px-3 py-1 rounded-md">
           Contact
         </li>
-        <li className="hover:bg-blue-100 cursor-pointer px-3 py-1 rounded-md">
+        <li className="hover:bg-blue-500 cursor-pointer px-3 py-1 rounded-md">
           Pricing
         </li>
-        <li className="hover:bg-blue-100 cursor-pointer px-3 py-1 rounded-md">
+        <li className="hover:bg-blue-500 cursor-pointer px-3 py-1 rounded-md">
           Terms of Service
         </li>
       </ul>
