@@ -58,50 +58,45 @@ const Signin = (props: Props) => {
 
   const handleClickSignin = async (formValues: z.infer<typeof authSchema>) => {
     setIsLoading(true);
-    console.log(formValues);
     try {
-      if(formValues.email ==="admin@gmail.com" && formValues.password ==="admin123"){
-        router.push("/dashboard")
+      const response = await apiCall(`${API.API_AUTH_LOGIN}`, "POST", {
+        data: { email: formValues.email, password: formValues.password },
+      });
+      console.log(response);
+
+      if (response?.data) {
+        let jwtToken = jwtDecode(response?.data?.data) as CustomJwtPayload;
+        console.log(jwtToken);
+
+        if (jwtToken?.isAuthorized === true) {
+          Cookies.set("token", response?.data?.data, { expires: 1 });
+          Cookies.set("user", JSON.stringify(jwtToken), { expires: 1 });
+          toast({
+            title: "Success",
+            description: "Signin successful",
+            variant: "success",
+            duration: 900,
+          });
+          setIsLoading(false);
+          return router.push("/dashboard");
+        }
+      } else {
+        toast({
+          title: "Failed to signin",
+          description: "Signin Failed",
+          variant: "destructive",
+          duration: 900,
+        });
         setIsLoading(false);
-      }else{
-        setIsLoading(false)
+        return undefined;
       }
-      // const response = await apiCall(
-      //   `${API.API_AUTH_LOGIN}?email=${formValues.email}&password=${formValues.password}`,
-      //   "GET"
-      // );
-      // if (response?.data?.data.token) {
-      //   let jwtToken = jwtDecode(
-      //     response?.data?.data.token
-      //   ) as CustomJwtPayload;
-      //   if (jwtToken?.isAuthorized === true) {
-      //     Cookies.set("user", jwtToken?.username);
-      //     toast({
-      //       title: "Success",
-      //       description: "Signin successful",
-      //       variant: "success",
-      //       duration: 900,
-      //     });
-      //     setIsLoading(false);
-      //     return router.push("/dashboard");
-      //   }
-      // } else {
-      //   toast({
-      //     title: "Failed to signin",
-      //     description: "Signin Failed",
-      //     variant: "destructive",
-      //     duration: 900,
-      //   });
-      //   setIsLoading(false);
-      //   return undefined;
-      // }
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div className="flex  bg-gradient-to-r from-blue-400 to-blue-600  h-screen align-middle justify-center items-center bg-white shadow-md">
+    <div className="flex bg-gradient-to-r from-black via-gray-800 to-black h-screen align-middle justify-center items-center bg-white shadow-md">
       <Card className="w-[430px] h-fit">
         <CardHeader>
           <CardTitle className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
@@ -165,7 +160,7 @@ const Signin = (props: Props) => {
               <div>
                 <Button
                   disabled={isLoading}
-                  className="mt-4 w-full bg-gradient-to-r from-blue-400 to-blue-500 float-end mb-4"
+                  className="mt-4 w-full bg-gradient-to-r from-black via-gray-800  to-black  float-end mb-4"
                   type="submit"
                 >
                   {isLoading ? (

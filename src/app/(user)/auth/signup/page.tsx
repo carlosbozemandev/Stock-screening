@@ -120,7 +120,7 @@ const Signup = (props: Props) => {
   // }
 
   return (
-    <div className="flex  bg-gradient-to-r from-blue-400 to-blue-600  h-screen align-middle justify-center items-center bg-white shadow-md">
+    <div className="flex  bg-gradient-to-r from-black via-gray-800  to-black  h-screen align-middle justify-center items-center bg-white shadow-md">
       <Card className="w-[430px] h-fit">
         <CardHeader>
           <CardTitle className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
@@ -210,7 +210,7 @@ const Signup = (props: Props) => {
               <div>
                 <Button
                   disabled={isLoading}
-                  className="mt-4 w-full bg-gradient-to-r from-blue-400 to-blue-500 float-end mb-4"
+                  className="mt-4 w-full bg-gradient-to-r from-black via-gray-800  to-black  float-end mb-4"
                   type="submit"
                 >
                   {isLoading ? (
