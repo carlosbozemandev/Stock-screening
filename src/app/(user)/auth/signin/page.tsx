@@ -26,11 +26,21 @@ import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
 import { useRouter } from "next/navigation";
+
+import { API } from "@/utils/apiCalls";
+import { apiCall } from "@/utils/apiCalls";
+import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
+import { JwtPayload } from "jsonwebtoken";
 
 type Props = {
   setIsSignUp: (active: boolean) => void;
 };
+
+export interface CustomJwtPayload extends JwtPayload {
+  isAuthorized?: boolean;
+  username: string;
+}
 
 const Signin = (props: Props) => {
   const { toast } = useToast();
@@ -48,47 +58,39 @@ const Signin = (props: Props) => {
 
   const handleClickSignin = async (formValues: z.infer<typeof authSchema>) => {
     console.log(formValues);
-
-    // try {
-    //   setIsLoading(true);
-    //   const request = await userSigninRequest(
-    //     formValues.email,
-    //     formValues.password
-    //   );
-    //   console.log(request);
-
-    //   const data = await request.json();
-    //   console.log(data);
-      
-    //   if (data?.success) {
-    //     Cookies.set("token", data?.data.token);
-    //     toast({
-    //       title: "Success",
-    //       description: "Signin successful",
-    //       variant: "success",
-    //       duration: 900,
-    //     });
-    //     setIsLoading(false);
-    //     router.push("/dashboard");
-    //   }
-    //   if (!data?.success) {
-    //     toast({
-    //       title: "Failed",
-    //       description: "email or password might be incorrect",
-    //       variant: "destructive",
-    //       duration: 900,
-    //     });
-    //     setIsLoading(false);
-    //   }
-    // } catch (error) {
-    //   toast({
-    //     title: "Error (Server)",
-    //     description: "Signin failed",
-    //     variant: "destructive",
-    //     duration: 900,
-    //   });
-    //   setIsLoading(false);
-    // }
+    try {
+      const response = await apiCall(
+        `${API.API_AUTH_LOGIN}?email=${formValues.email}&password=${formValues.password}`,
+        "GET"
+      );
+      if (response?.data?.data.token) {
+        let jwtToken = jwtDecode(
+          response?.data?.data.token
+        ) as CustomJwtPayload;
+        if (jwtToken?.isAuthorized === true) {
+          Cookies.set("user", jwtToken?.username);
+          toast({
+            title: "Success",
+            description: "Signin successful",
+            variant: "success",
+            duration: 900,
+          });
+          setIsLoading(false);
+          return router.push("/dashboard");
+        }
+      } else {
+        toast({
+          title: "Failed to signin",
+          description: "Signin Failed",
+          variant: "destructive",
+          duration: 900,
+        });
+        setIsLoading(false);
+        return undefined;
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -98,7 +100,7 @@ const Signin = (props: Props) => {
           <CardTitle className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
             Signin
             <CardDescription className="mt-1">
-              Sign in to use report mailing system.
+              Sign in to use stock screening.
             </CardDescription>
           </CardTitle>
         </CardHeader>
@@ -174,4 +176,4 @@ const Signin = (props: Props) => {
   );
 };
 
-export default Signin
+export default Signin;

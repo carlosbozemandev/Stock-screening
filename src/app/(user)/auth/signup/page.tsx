@@ -26,7 +26,8 @@ import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
 import { useRouter } from "next/navigation";
-
+import { apiCall } from "@/utils/apiCalls";
+import { API } from "@/utils/apiCalls";
 
 type Props = {};
 
@@ -39,8 +40,8 @@ const Signup = (props: Props) => {
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      fname: "",
+      lname: "",
       email: "",
       password: "",
     },
@@ -50,47 +51,74 @@ const Signup = (props: Props) => {
     formValues: z.infer<typeof registerSchema>
   ) => {
     console.log(formValues);
-
-    // try {
-    //   setIsLoading(true);
-    //   const request = await userSignupRequest(
-    //     formValues.email,
-    //     formValues.password,
-    //     formValues.firstName,
-    //     formValues.lastName
-    //   );
-    //   console.log(request);
-
-    //   const data = await request.json();
-    //   if (data?.success) {
-    //     toast({
-    //       title: "Success",
-    //       description: "Registration successful",
-    //       variant: "success",
-    //       duration: 900,
-    //     });
-    //     setIsLoading(false);
-    //     router.push("/auth/signin");
-    //   }
-    //   if (!data?.success) {
-    //     toast({
-    //       title: "Failed",
-    //       description: "email already exists.",
-    //       variant: "destructive",
-    //       duration: 900,
-    //     });
-    //     setIsLoading(false);
-    //   }
-    // } catch (error) {
-    //   toast({
-    //     title: "Error (Server)",
-    //     description: "Signin failed",
-    //     variant: "destructive",
-    //     duration: 900,
-    //   });
-    //   setIsLoading(false);
-    // }
+    try {
+      const response = await apiCall(`${API.API_AUTH_SIGNUP}`, "POST", {
+        data: formValues,
+      });
+      if (response?.data?.data.token) {
+        toast({
+          title: "Success",
+          description: "Signin successful",
+          variant: "success",
+          duration: 900,
+        });
+        setIsLoading(false);
+        return router.push("/auth/signin");
+      } else {
+        toast({
+          title: "Failed to signin",
+          description: "Signin Failed",
+          variant: "destructive",
+          duration: 900,
+        });
+        setIsLoading(false);
+        return undefined;
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  // try {
+  //   setIsLoading(true);
+  //   const request = await userSignupRequest(
+  //     formValues.email,
+  //     formValues.password,
+  //     formValues.firstName,
+  //     formValues.lastName
+  //   );
+  //   console.log(request);
+
+  //   const data = await request.json();
+  //   if (data?.success) {
+  //     toast({
+  //       title: "Success",
+  //       description: "Registration successful",
+  //       variant: "success",
+  //       duration: 900,
+  //     });
+  //     setIsLoading(false);
+  //     router.push("/auth/signin");
+  //   }
+  //   if (!data?.success) {
+  //     toast({
+  //       title: "Failed",
+  //       description: "email already exists.",
+  //       variant: "destructive",
+  //       duration: 900,
+  //     });
+  //     setIsLoading(false);
+  //   }
+  // } catch (error) {
+  //   toast({
+  //     title: "Error (Server)",
+  //     description: "Signin failed",
+  //     variant: "destructive",
+  //     duration: 900,
+  //   });
+  //   setIsLoading(false);
+  // }
+
   return (
     <div className="flex  bg-gradient-to-r from-blue-400 to-blue-600  h-screen align-middle justify-center items-center bg-white shadow-md">
       <Card className="w-[430px] h-fit">
@@ -98,7 +126,7 @@ const Signup = (props: Props) => {
           <CardTitle className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
             Sign Up
             <CardDescription className="mt-1">
-              Sign up to use report mailing system.
+              Sign up to use stock screening.
             </CardDescription>
           </CardTitle>
         </CardHeader>
@@ -110,7 +138,7 @@ const Signup = (props: Props) => {
             >
               <FormField
                 control={form.control}
-                name="firstName"
+                name="fname"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>First Name</FormLabel>
@@ -123,7 +151,7 @@ const Signup = (props: Props) => {
               />
               <FormField
                 control={form.control}
-                name="lastName"
+                name="lname"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>last Name</FormLabel>

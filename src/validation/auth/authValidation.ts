@@ -13,10 +13,10 @@ export const authSchema = z.object({
 });
 
 export const registerSchema = z.object({
-  firstName: z.string({
+  fname: z.string({
     required_error: "First name is required.",
   }),
-  lastName: z.string({
+  lname: z.string({
     required_error: "Last name is required.",
   }),
   email: z
