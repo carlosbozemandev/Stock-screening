@@ -34,13 +34,13 @@ const FinancialMessage = () => {
           <p>Struggling to understand what works?</p>
         </div>
       </div>
-      <button className="bg-blue-500 text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-green-600 transition duration-200">
+      {/* <button className="bg-blue-500 text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-green-600 transition duration-200">
         CHANGE YOUR RESEARCH PROCESS TODAY
-      </button>
-      <p className="mt-4 text-gray-600">
+      </button> */}
+      {/* <p className="mt-4 text-gray-600">
         After your free trial, plans start at just £295 per year. With a one
         month money back guarantee, you are in control.
-      </p>
+      </p> */}
     </div>
   );
 };

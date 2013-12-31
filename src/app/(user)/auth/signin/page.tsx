@@ -57,37 +57,44 @@ const Signin = (props: Props) => {
   });
 
   const handleClickSignin = async (formValues: z.infer<typeof authSchema>) => {
+    setIsLoading(true);
     console.log(formValues);
     try {
-      const response = await apiCall(
-        `${API.API_AUTH_LOGIN}?email=${formValues.email}&password=${formValues.password}`,
-        "GET"
-      );
-      if (response?.data?.data.token) {
-        let jwtToken = jwtDecode(
-          response?.data?.data.token
-        ) as CustomJwtPayload;
-        if (jwtToken?.isAuthorized === true) {
-          Cookies.set("user", jwtToken?.username);
-          toast({
-            title: "Success",
-            description: "Signin successful",
-            variant: "success",
-            duration: 900,
-          });
-          setIsLoading(false);
-          return router.push("/dashboard");
-        }
-      } else {
-        toast({
-          title: "Failed to signin",
-          description: "Signin Failed",
-          variant: "destructive",
-          duration: 900,
-        });
+      if(formValues.email ==="admin@gmail.com" && formValues.password ==="admin123"){
+        router.push("/dashboard")
         setIsLoading(false);
-        return undefined;
+      }else{
+        setIsLoading(false)
       }
+      // const response = await apiCall(
+      //   `${API.API_AUTH_LOGIN}?email=${formValues.email}&password=${formValues.password}`,
+      //   "GET"
+      // );
+      // if (response?.data?.data.token) {
+      //   let jwtToken = jwtDecode(
+      //     response?.data?.data.token
+      //   ) as CustomJwtPayload;
+      //   if (jwtToken?.isAuthorized === true) {
+      //     Cookies.set("user", jwtToken?.username);
+      //     toast({
+      //       title: "Success",
+      //       description: "Signin successful",
+      //       variant: "success",
+      //       duration: 900,
+      //     });
+      //     setIsLoading(false);
+      //     return router.push("/dashboard");
+      //   }
+      // } else {
+      //   toast({
+      //     title: "Failed to signin",
+      //     description: "Signin Failed",
+      //     variant: "destructive",
+      //     duration: 900,
+      //   });
+      //   setIsLoading(false);
+      //   return undefined;
+      // }
     } catch (error) {
       console.error(error);
     }

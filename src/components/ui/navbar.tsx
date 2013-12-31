@@ -5,11 +5,14 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className=" grid grid-cols-3 bg-white border border-b-1 text-black text-sm w-full h-12">
-      <div className="font-bold w-fit mx-2 p-2 bg-transparent flex justify-center items-center h-fit text-xl ">
+    <div className="grid grid-cols-1 md:grid-cols-3 bg-white border-b text-black text-sm h-16 md:h-12">
+      {/* Logo / Title */}
+      <div className="font-bold flex justify-center items-center text-xl p-2">
         Stock Screening
       </div>
-      <ul className="flex space-x-3 justify-center items-center pt-1">
+
+      {/* Navigation Links */}
+      <ul className="hidden md:flex space-x-3 justify-center items-center">
         <li className="hover:bg-blue-100 cursor-pointer px-3 py-1 rounded-md">
           Home
         </li>
@@ -29,12 +32,14 @@ const Navbar = () => {
           Terms of Service
         </li>
       </ul>
-      <div className="font-bold w-full mx-2 pt-2 flex justify-center items-center h-fit text-md ">
+
+      {/* Login Button */}
+      <div className="flex justify-center items-center p-2">
         <Link
-          href={"/auth/signin"}
-          className="text-white bg-blue-500 w-fit flex items-center p-[5px] rounded-md  border-blue-500 hover:bg-blue-500 hover:text-white"
+          href="/auth/signin"
+          className="text-white bg-blue-500 flex items-center px-3 py-1 rounded-md hover:bg-blue-600"
         >
-          Login <LogInIcon className="h-4 w-4 mx-1 text-white" />
+          Login <LogInIcon className="h-4 w-4 ml-2 text-white" />
         </Link>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { HttpApiError, HttpResponse } from "@/utils/HttpRespone";
 import { Mongo } from "@/utils/mongo/";
 import jwt from "jsonwebtoken";
-import cookie   from "cookie";
+import cook   from "cookie";
 
 const SECRET_KEY =
   "qwertyuiodoasjrfbheskfhdsxcvboiswueorghbfo3urbn23o9h9hjklzxcvbnms"; // Replace with your own secret key

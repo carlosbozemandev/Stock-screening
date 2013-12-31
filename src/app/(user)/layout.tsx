@@ -15,10 +15,18 @@ const Layout = ({ children }: Props) => {
   // Conditional checks for paths
   const isAuthPage = pathname === "/auth/signin" || pathname === "/auth/signup";
   const isLandingPage = pathname === "/landing/home";
+  const isDahsboardPage = pathname === "/dashboard";
 
   return (
     <>
       {isAuthPage && (
+        <>
+          {children}
+          <Toaster />
+        </>
+      )}
+  
+      {isDahsboardPage && (
         <>
           {children}
           <Toaster />
