@@ -79,46 +79,6 @@ const Signup = (props: Props) => {
     }
   };
 
-  // try {
-  //   setIsLoading(true);
-  //   const request = await userSignupRequest(
-  //     formValues.email,
-  //     formValues.password,
-  //     formValues.firstName,
-  //     formValues.lastName
-  //   );
-  //   console.log(request);
-
-  //   const data = await request.json();
-  //   if (data?.success) {
-  //     toast({
-  //       title: "Success",
-  //       description: "Registration successful",
-  //       variant: "success",
-  //       duration: 900,
-  //     });
-  //     setIsLoading(false);
-  //     router.push("/auth/signin");
-  //   }
-  //   if (!data?.success) {
-  //     toast({
-  //       title: "Failed",
-  //       description: "email already exists.",
-  //       variant: "destructive",
-  //       duration: 900,
-  //     });
-  //     setIsLoading(false);
-  //   }
-  // } catch (error) {
-  //   toast({
-  //     title: "Error (Server)",
-  //     description: "Signin failed",
-  //     variant: "destructive",
-  //     duration: 900,
-  //   });
-  //   setIsLoading(false);
-  // }
-
   return (
     <div className="flex  bg-gradient-to-r from-black via-gray-800  to-black  h-screen align-middle justify-center items-center bg-white shadow-md">
       <Card className="w-[430px] h-fit">

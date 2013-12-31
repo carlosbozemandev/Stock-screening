@@ -5,7 +5,7 @@ import banner from "@/assets/hero.jpg";
 
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-r from-blue-500  to-blue-600 text-white">
+    <section className="bg-gradient-to-r from-black via-gray-800 to-black text-white">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between text-center md:text-left py-16 px-4 sm:px-6 md:px-8">
         {/* Text Content */}
         <div className="flex-1 mb-8 md:mb-0">

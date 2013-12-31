@@ -5,10 +5,10 @@ const PortfolioSteps = () => {
     <div className="flex flex-col items-center container mt-4 space-y-6 p-8 ">
       {/* Header */}
       <div className="text-center">
-        <h2 className="text-2xl font-semibold text-gray-800">
+        <h2 className="text-2xl font-semibold text-white">
           Take control of your portfolio in a few simple steps
         </h2>
-        <p className="text-gray-600">
+        <p className="text-white">
           You can align your holdings with the power of factor investing <span className="font-semibold text-green-600">within minutes</span>
         </p>
       </div>
@@ -16,7 +16,7 @@ const PortfolioSteps = () => {
       {/* Steps */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
         {/* Step 1 */}
-        <div className="bg-white p-6 shadow rounded-md text-center">
+        <div className="bg-gradient-to-r border border-blue-500 from-black via-gray-800 to-black p-6 shadow rounded-md text-center">
           <div className="mb-4">
             <span className="bg-blue-500 text-white px-3 py-1 rounded-full">1</span>
           </div>
@@ -26,7 +26,7 @@ const PortfolioSteps = () => {
               <div className="flex items-center space-x-2">
                 <div className="bg-red-500 w-8 h-8 rounded-full"></div>
                 <div>
-                  <h4 className="font-bold text-sm">Tesla Inc</h4>
+                  <h4 className="font-bold text-sm text-white">Tesla Inc</h4>
                   <p className="text-xs text-gray-500">$416.77 <span className="text-red-500">↓ 0.74%</span></p>
                   <p className="text-xs font-semibold text-red-600">Sucker Stock</p>
                 </div>
@@ -34,19 +34,19 @@ const PortfolioSteps = () => {
               <div className="flex items-center space-x-2 mt-4">
                 <div className="bg-green-500 w-8 h-8 rounded-full"></div>
                 <div>
-                  <h4 className="font-bold text-sm">Microsoft</h4>
+                  <h4 className="font-bold text-sm text-white">Microsoft</h4>
                   <p className="text-xs text-gray-500">$210.32 <span className="text-green-500">↑ 2.73%</span></p>
                   <p className="text-xs font-semibold text-green-600">High Flyer</p>
                 </div>
               </div>
             </div>
           </div>
-          <h4 className="font-semibold text-gray-800">Search your stocks</h4>
+          <h4 className="font-semibold text-white">Search your stocks</h4>
           <p className="text-gray-500 text-sm">Search by name or ticker for an immediate assessment of any of your holdings or ideas.</p>
         </div>
 
         {/* Step 2 */}
-        <div className="bg-white p-6 shadow rounded-md text-center">
+        <div className="bg-gradient-to-r border border-blue-500 from-black via-gray-800 to-black p-6 shadow rounded-md text-center">
           <div className="mb-4">
             <span className="bg-blue-500 text-white px-3 py-1 rounded-full">2</span>
           </div>
@@ -59,12 +59,12 @@ const PortfolioSteps = () => {
               <div className="text-xs text-gray-500">-18%</div>
             </div>
           </div>
-          <h4 className="font-semibold text-gray-800">Check their ranks</h4>
+          <h4 className="font-semibold text-white">Check their ranks</h4>
           <p className="text-gray-500 text-sm">Gain insight into each stock’s Quality, Value & Momentum using our multi-factor rankings.</p>
         </div>
 
         {/* Step 3 */}
-        <div className="bg-white p-6 shadow rounded-md text-center">
+        <div className="bg-gradient-to-r border border-blue-500 from-black via-gray-800 to-blackp-6 shadow rounded-md text-center">
           <div className="mb-4">
             <span className="bg-blue-500 text-white px-3 py-1 rounded-full">3</span>
           </div>
@@ -72,7 +72,7 @@ const PortfolioSteps = () => {
             {/* Placeholder for the chart */}
             <div className="w-20 h-20 bg-gray-200 rounded-full"></div>
           </div>
-          <h4 className="font-semibold text-gray-800">Optimise your folio</h4>
+          <h4 className="font-semibold text-white">Optimise your folio</h4>
           <p className="text-gray-500 text-sm">Expose your portfolio to factors that work and bring clarity to your buy, hold & sell decisions.</p>
         </div>
       </div>

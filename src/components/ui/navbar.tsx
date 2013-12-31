@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 bg-white border-b text-black text-sm h-16 md:h-12">
+    <div className="grid grid-cols-1 md:grid-cols-3 bg-gradient-to-r from-black via-gray-800 to-black border-b text-white text-sm h-16 md:h-12">
       {/* Logo / Title */}
       <div className="font-bold flex justify-center items-center text-xl p-2">
         Stock Screening
@@ -37,7 +37,7 @@ const Navbar = () => {
       <div className="flex justify-center items-center p-2">
         <Link
           href="/auth/signin"
-          className="text-white bg-blue-500 flex items-center px-3 py-1 rounded-md hover:bg-blue-600"
+          className="text-white bg-gradient-to-r from-black via-gray-800 to-black flex items-center px-3 py-1 rounded-md border hover:bg-blue-600"
         >
           Login <LogInIcon className="h-4 w-4 ml-2 text-white" />
         </Link>

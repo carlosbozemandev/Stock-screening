@@ -7,7 +7,7 @@ type Props = {}
 
 const page = (props: Props) => {
   return (
-    <div className=''>
+    <div className='bg-gradient-to-r  from-black via-gray-800 to-black'>
         <Hero/>
         <PortfolioSteps/>
         <FinancialMessage/>
